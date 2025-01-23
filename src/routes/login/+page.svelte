@@ -1,13 +1,13 @@
 <script>
-  // import { ArrowLeft } from 'lucide-svelte';
+  import { ArrowLeft } from 'lucide-svelte';
 </script>
 
 <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
-    <!-- <a href="/" class="flex items-center text-sm text-gray-500 hover:text-gray-900 mb-6">
+    <a href="/" class="flex items-center text-sm text-gray-500 hover:text-gray-900 mb-6">
       <ArrowLeft class="w-4 h-4 mr-2" />
       Back to home
-    </a> -->
+    </a>
     <h2 class="text-center text-3xl font-extrabold text-gray-900">
       Sign in to your account
     </h2>
