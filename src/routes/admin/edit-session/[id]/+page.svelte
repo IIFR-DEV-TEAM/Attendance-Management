@@ -1,6 +1,6 @@
 <script>
     import { ArrowLeft } from 'lucide-svelte';
-    export let data;
+    let data = $props();
   </script>
   
   <div class="min-h-screen bg-gray-50 py-8">

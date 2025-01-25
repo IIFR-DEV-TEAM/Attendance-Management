@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { preventDevTools } from '$lib/dev-tools-prevention';
-	preventDevTools()
+	// preventDevTools()
 	let { children } = $props();
 </script>
 

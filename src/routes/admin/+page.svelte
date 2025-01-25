@@ -1,7 +1,6 @@
 <script>
-  import { Plus, Edit2 } from 'lucide-svelte';
+  import { Plus, Pencil } from 'lucide-svelte';
 
-  // Placeholder data
   const sessions = [
     {
       id: 'ROBO1234',
@@ -17,7 +16,6 @@
       endTime: '17:00',
       status: 'expired'
     },
-    // Add more sessions as needed
   ];
 </script>
 
@@ -64,7 +62,7 @@
                     href="/admin/edit-session/{session.id}"
                     class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
                   >
-                    <Edit2 class="w-4 h-4 mr-2" />
+                    <Pencil class="w-4 h-4 mr-2" />
                     Edit
                   </a>
                 </div>

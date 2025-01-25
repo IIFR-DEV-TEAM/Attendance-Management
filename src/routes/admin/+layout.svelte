@@ -1,5 +1,5 @@
 <script>
-    export let title = 'Admin Dashboard';
+    let title = 'Admin Dashboard';
   </script>
   
   <div class="min-h-screen bg-gray-100">

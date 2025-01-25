@@ -18,7 +18,7 @@ const preventDevTools = () =>{
       const widthDiff = Math.abs(window.outerWidth - window.innerWidth);
       const heightDiff = Math.abs(window.outerHeight - window.innerHeight);
       if (widthDiff > threshold || heightDiff > threshold) {
-        alert('Developer tools detected!');
+        return
       }
     };
 
