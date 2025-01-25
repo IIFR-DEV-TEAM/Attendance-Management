@@ -5,7 +5,7 @@ export const POST: RequestHandler = async ({ request }) => {
   const { date, startTime, endTime, sessionId }: Omit<SessionType, '_id'> = await request.json();
 
   try {
-    const session = new Session({ date, startTime, endTime, sessionId });
+    const session = new Session({ date, startTime, endTime, sessionId }) 
     await session.save();
     return json({ success: true, message: 'Session created successfully' });
   } catch (error) {

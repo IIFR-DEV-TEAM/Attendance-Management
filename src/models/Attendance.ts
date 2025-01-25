@@ -1,11 +1,11 @@
-import mongoose, {Schema, Document} from "mongoose"
+import mongoose, {Schema, Document, Model} from "mongoose"
 
-interface AttendanceType extends Document {
+interface AttendanceType extends Document{
     sessionId: string,
     userId:string,
 }
 
-const AttendanceSchema = new Schema({
+const AttendanceSchema = new Schema<AttendanceType>({
     sessionId:{
         type:String,
         required:true
@@ -16,6 +16,11 @@ const AttendanceSchema = new Schema({
     },
         
 })
-
-export const Attendance = mongoose.models.Attendance<AttendanceType> || mongoose.model<AttendanceType>("Attendance",AttendanceSchema)
+let Attendance : Model<AttendanceType>
+try {
+    Attendance = mongoose.model<AttendanceType>("attendance")
+} catch (error) {
+    Attendance = mongoose.model<AttendanceType>('attendance', AttendanceSchema);
+}
+export {Attendance}
 export type {AttendanceType}

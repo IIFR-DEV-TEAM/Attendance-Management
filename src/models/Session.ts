@@ -1,6 +1,6 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document, Model } from 'mongoose';
 
-interface SessionType extends Document {
+interface SessionType extends Document{
   date: string;
   startTime: string;
   endTime: string;
@@ -13,6 +13,12 @@ const SessionSchema = new Schema<SessionType>({
   endTime: { type: String, required: true },
   sessionId: { type: String, required: true, unique: true }
 });
+let Session: Model<SessionType>
+try {
+  Session = mongoose.model<SessionType>('session'); 
+} catch {
+  Session = mongoose.model<SessionType>('session', SessionSchema);
+}
 
-export const Session = mongoose.models.Session<SessionType> || mongoose.model<SessionType>('Session', SessionSchema);
-export type {SessionType}
+export { Session };
+export type { SessionType };

@@ -23,7 +23,6 @@ const generateUserData = async () => {
     },
   ];
 
-  console.log(JSON.stringify(users, null, 2));
 };
 
 generateUserData();

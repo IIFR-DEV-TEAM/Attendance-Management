@@ -1,7 +1,7 @@
 import { json, type RequestHandler } from '@sveltejs/kit';
 import connectDB from '$lib/db';
 import { comparePassword, generateJWT } from '$lib/auth';
-import User from 'models/User';
+import {User} from 'models/User';
 
 export const POST: RequestHandler = async ({ request, cookies }) => {
   try {
@@ -21,7 +21,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
     }
 
     const token = generateJWT({
-      userId: user._id.toString(),
+      userId: user.userId,
       firstname: user.firstname,
       lastname: user.lastname,
       email: user.email,

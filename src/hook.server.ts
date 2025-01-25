@@ -17,7 +17,6 @@ export const handle: Handle = async ({ event, resolve }) => {
         isAdmin: decoded.admin,
         email: decoded.email
       };
-	  console.log(decoded)
     } catch (error) {
       console.error('Invalid or expired token:', error);
       event.locals.user = null;

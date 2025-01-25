@@ -5,10 +5,10 @@ export const POST : RequestHandler = async({request}) =>{
   try {
     const attendance = await Attendance.findOne({sessionId,userId})
     if(attendance){
-      return json({success:true}, {status:200})
+      return json({success:true, attendance}, {status:200})
     }
     else{
-      return json({success:false},{status:404})
+      return json({success:false},{status:400})
     }
   } catch (error) {
     return json({success:false},{status:500})

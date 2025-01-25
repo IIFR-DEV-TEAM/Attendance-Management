@@ -39,7 +39,6 @@
 		const minutes = Math.floor((diffMs % 3600000) / 60000);
 		return `${hours}h ${minutes}m`;
 	};
-
 	const updateSessions = () => {
 		currentSessions = currentSessions.filter((session) => {
 			const timeLeft = calculateTimeLeft(session);
@@ -60,16 +59,38 @@
 		});
 	};
 
+	const joinSession = async (sessionId: string, userId: string) => {
+		try {
+			const res = await fetch('/student', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ sessionId, userId })
+			});
+			const { success }: { success: boolean } = await res.json();
+			console.log(success)
+			if (success) {
+				await goto('/student/success');
+			} else {
+				await goto('/student/history');
+			}
+		} catch (error) {
+			console.error('Error joining sessions', error);
+			await goto('/student/history');
+		}
+	};
+
 	onMount(async () => {
 		try {
 			const token = data.sessionid;
 			if (token) {
 				decoded = jwtDecode(token);
 			} else {
-				await goto("/login")
+				await goto('/login');
 				console.warn('No sessionid cookie found.');
 			}
-			const res = await fetch('/api/session');
+			const res = await fetch('/api/session/fetch');
 			if (res.ok) {
 				const { sessions }: { sessions: Session[] } = await res.json();
 				// console.log({sessions})
@@ -82,7 +103,7 @@
 					// console.log(timeLeft)
 
 					if (timeLeft === 'Expired') {
-						const attendedResponse = await fetch('/api/attendance', {
+						const attendedResponse = await fetch('/api/attendance/find', {
 							method: 'POST',
 							headers: { 'Content-Type': 'application/json' },
 							body: JSON.stringify({ sessionId: session.sessionId, userId: decoded.userId })
@@ -104,8 +125,6 @@
 						});
 					}
 				});
-
-				// console.log({ expiredSessions, currentSessions });
 
 				setInterval(updateSessions, 60000);
 			} else {
@@ -165,8 +184,10 @@
 								<button
 									class="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
 									disabled={session.status !== 'active'}
+									onclick={()=>joinSession(session.sessionId,decoded.userId)}
 								>
 									{session.status === 'active' ? 'Join Session' : 'Opens Soon'}
+								
 								</button>
 							</div>
 						</div>
