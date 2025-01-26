@@ -97,7 +97,7 @@
         <div class="mt-12 flex justify-center">
           <div class="relative w-full max-w-4xl aspect-[16/9] rounded-xl overflow-hidden">
             <img
-              src="src/static/Team.webp"
+              src="https://i.ibb.co/prVqYHz/Team.webp"
               alt="Bigyan Labs Team"
               class="w-full h-full object-cover"
             />
