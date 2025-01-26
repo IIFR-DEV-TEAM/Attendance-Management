@@ -5,7 +5,8 @@ node_modules
 .vercel
 /.svelte-kit
 /build
-
+/.idx
+/.vscode
 # OS
 .DS_Store
 Thumbs.db
@@ -15,7 +16,11 @@ Thumbs.db
 .env.*
 !.env.example
 !.env.test
-
+test.js
+test.svelte
+users.xlsx
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+bun.lockb
+pnpm-lock.yaml
