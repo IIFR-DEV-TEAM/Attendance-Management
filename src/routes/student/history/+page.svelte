@@ -70,7 +70,7 @@
       attendanceData = {
         totalSessions: data.totalSessions,
         attendedSessions: data.attendedSessions,
-        attendancePercentage: Math.round((data.attendedSessions / data.totalSessions) * 100),
+        attendancePercentage: Math.round((data.attendedSessions / data.totalSessions) * 100) ? Math.round((data.attendedSessions / data.totalSessions) * 100) : 0,
         sessions: sessionsWithStatus,
       };
       console.log(attendanceData)
