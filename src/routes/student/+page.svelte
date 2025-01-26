@@ -31,9 +31,8 @@
 	const calculateTimeLeft = (session: Session): string => {
 		const startTime = new Date(`${session.date}T${session.startTime}`);
 		const currentTime = new Date();
-		// console.log({startTime,currentTime})
-		const diffMs = startTime.getTime() - currentTime.getTime();
-		// console.log(diffMs)
+		const endTime = new Date(`${session.date}T${session.endTime}`)
+		const diffMs = endTime.getTime() - currentTime.getTime();
 		if (diffMs <= 0) return 'Expired';
 		const hours = Math.floor(diffMs / 3600000);
 		const minutes = Math.floor((diffMs % 3600000) / 60000);

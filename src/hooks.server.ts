@@ -1,15 +1,20 @@
-import type { Handle } from '@sveltejs/kit';
-import { verifyJWT } from '$lib/auth';
+import { redirect, type Handle } from '@sveltejs/kit';
+import { jwtDecode } from 'jwt-decode';
 import type { UserType } from 'models/User';
-import { goto } from '$app/navigation';
-
+interface DecodedJWT {
+  userId: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+  admin: boolean;
+  iat: number;
+  exp: number;
+}
 export const handle: Handle = async ({ event, resolve }) => {
-  const authHeader = event.request.headers.get('Authorization');
-  const token = authHeader?.split(' ')[1] ?? event.cookies.get('sessionid');
-
+  const token = event.cookies.get("sessionid")
   if (token) {
     try {
-      const decoded = verifyJWT(token) as UserType;
+      const decoded = jwtDecode(token) as  DecodedJWT
       event.locals.user = {
         id: decoded.userId,
         firstname: decoded.firstname,
@@ -35,15 +40,15 @@ export const handle: Handle = async ({ event, resolve }) => {
   if (route) {
     const user = event.locals.user;
     if (!user) {
-		goto("/")
+		redirect(303,"/login")
       return new Response('Unauthorized: Please log in.', { status: 401 });
     }
 
     if (route.role === 'admin' && !user.isAdmin) {
-		goto("/")
+      redirect(303,"/login")
       return new Response('Forbidden: Admins only.', { status: 403 });
     }
   }
-
-  return resolve(event);
+  const response = await resolve(event)
+  return response
 };

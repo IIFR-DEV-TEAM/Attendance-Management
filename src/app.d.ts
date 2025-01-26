@@ -7,6 +7,7 @@ declare namespace App {
 			lastname: string;
 			email: string;
 			isAdmin: boolean;
-		} | null;
+		} | null,
+		token: string;
 	}
 }

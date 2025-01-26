@@ -1,5 +1,5 @@
 <script>
-    let date = '2025-01-23'; // Placeholder for existing session data
+    let date = '2025-01-23'; 
     let startTime = '10:00 AM';
     let endTime = '12:00 PM';
   </script>
