@@ -3,8 +3,7 @@ import { jwtDecode } from 'jwt-decode';
 import type { UserType } from 'models/User';
 interface DecodedJWT {
   userId: string;
-  firstname: string;
-  lastname: string;
+  name:string;
   email: string;
   admin: boolean;
   iat: number;
@@ -17,8 +16,7 @@ export const handle: Handle = async ({ event, resolve }) => {
       const decoded = jwtDecode(token) as  DecodedJWT
       event.locals.user = {
         id: decoded.userId,
-        firstname: decoded.firstname,
-        lastname: decoded.lastname,
+        name: decoded.name,
         isAdmin: decoded.admin,
         email: decoded.email
       };
