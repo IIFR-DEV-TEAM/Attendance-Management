@@ -17,8 +17,7 @@
 
 	interface DecodedJWT {
 		userId: string;
-		firstname: string;
-		lastname: string;
+		name:string;
 		email: string;
 		admin: boolean;
 		iat: number;
@@ -140,7 +139,7 @@
 	<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 		<div class="mb-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
 			<h1 class="w-full text-center text-2xl font-bold text-gray-900 sm:w-auto">
-				Student Dashboard
+				Spectrum 2025 Attendance
 			</h1>
 			<a
 				href="/student/history"

@@ -19,8 +19,7 @@
 
   interface DecodedJWT {
 		userId: string;
-		firstname: string;
-		lastname: string;
+		name:string;
 		email: string;
 		admin: boolean;
 		iat: number;

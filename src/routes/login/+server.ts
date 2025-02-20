@@ -22,8 +22,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 
     const token = generateJWT({
       userId: user.userId,
-      firstname: user.firstname,
-      lastname: user.lastname,
+      name:user.name,
       email: user.email,
       admin: user.admin
     });

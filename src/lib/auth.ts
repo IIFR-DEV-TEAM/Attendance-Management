@@ -3,8 +3,7 @@ import jwt from 'jsonwebtoken';
 import { JWT_SECRET } from '$env/static/private';
 export interface JWTUserPayload {
   userId: string;
-  firstname: string;
-  lastname: string;
+  name:string;
   email: string;
   admin: boolean;
 }

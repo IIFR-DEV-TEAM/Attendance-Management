@@ -1,8 +1,7 @@
 import mongoose, {Schema,Document, Model} from 'mongoose';
 
 interface UserType extends Document{
-    firstname:string,
-    lastname:string,
+    name:string,
     userId:string,
     password:string,
     attendancecount:number,
@@ -11,13 +10,9 @@ interface UserType extends Document{
 }
 
 const UserSchema = new Schema({
-  firstname: {
-    type: String,
-    required: true,
-  },
-  lastname: {
-    type: String,
-    required: true,
+  name:{
+    type:String,
+    required:true,
   },
   userId: {
     type: String,
